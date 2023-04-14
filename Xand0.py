@@ -21,18 +21,23 @@ def show_field():
 
 def user_input():
     while True:
-        coordinates = input("Ваш ход: ")
+        coordinates = input("Ваш ход: ").split()
         if len(coordinates) != 2:
             print("Введите 2 координаты! ")
             continue
+
         x, y = coordinates
+
         if not(x.isdigit()) or not(y.isdigit()):
             print("Введите числа!")
             continue
-        x, y = coordinates
+
+        x, y = int(x), int(y)
+
         if 0 > x > 2 or 0 > y > 2:
             print("Неверный диапозон!")
             continue
+
         if field[x][y] != "-":
             print("Клетка занята!")
             continue
